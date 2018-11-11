@@ -1,6 +1,9 @@
-<div >
-    <h2>{{pageTitle}}</h2>
+<div  class = "row">
+  <app-side-bar id="sdivde-out" class="side-nav fixed" [profilePicUrl] = "userService.generateImgUrl(loggedInUser.userId)"></app-side-bar>
+  <div class="col">
+      <h2>{{pageTitle}}</h2>
     <h5>Logged in as {{loggedInUser.firstName}}</h5>
     <app-user-table  (load) = "updateCvTable($event)" [loggedInUserDepartment] = "loggedInUser.department.departmentId"></app-user-table>
     <app-cv-table [userId] = "userToSearch" [userName] = "userName"></app-cv-table>
   </div>
+</div>

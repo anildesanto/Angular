@@ -31,15 +31,13 @@ export class UserTableComponent implements OnInit {
     return this.filter;
   }
   ngOnInit() {
-    if(this.loggedInUserDepartment !== 1 && this.loggedInUserDepartment !== 6)
-    {
+    //if(this.loggedInUserDepartment !== 1 && this.loggedInUserDepartment !== 6)
       this.userService.findUsers("","").subscribe(list =>
         {
           this.userList = list;
           this.filteredList = this.userList;
         }
         );
-    }
   }
   loadCvs(userId : string, userName : string)
   {

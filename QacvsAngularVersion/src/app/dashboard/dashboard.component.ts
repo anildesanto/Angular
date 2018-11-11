@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { IUser } from 'src/shared/user-table/user';
+import { UserService } from 'src/shared/user-table/users.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,7 @@ export class DashboardComponent implements OnInit {
   pageTitle : string = "Dashboard";
   userName : string;
   userToSearch : number;
-  constructor() {
+  constructor(private userService : UserService){
     console.log(this.loggedInUser);
   }
   loggedInUser : IUser = {

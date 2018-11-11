@@ -13,21 +13,24 @@ export class CvTableComponent implements OnInit {
   cvsList : ICv[];
   filteredCvsList : ICv[];
   @Input() userId : number;
+  @Input() toLoad : number;
   @Input() userName : string;
   tableTitle : string;
   ngOnChanges() : void
   {
-    this.tableTitle = `${this.userName}'s Cvs Table`;
+    
     this.load();
   }
   ngOnInit() 
   {
-    this.currentStatus = "All";
+    
     this.load();
    
   }
   load()
   {
+    this.tableTitle = `${this.userName}'s Cvs Table`;
+    this.currentStatus = "All";
     this.cvsService.getAllCvs().subscribe((list) => {
       this.cvsList = list.filter(cv => 
         cv.user.userId === this.userId
@@ -60,5 +63,14 @@ export class CvTableComponent implements OnInit {
     console.log(status);
     
     return  this.cvsList.filter((cv) => cv.status.toLowerCase().startsWith(status.toLowerCase()));
+  }
+  ngDoCheck() {
+    if (this.cvsService.reload  === true) 
+    {
+      this.load();
+      //this.changeDetector.detectChanges();
+      console.log("Reloaded: "+ this.cvsService.reload);
+      this.cvsService.reload = false;
+    }
   }
 }
