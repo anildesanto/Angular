@@ -6,9 +6,32 @@
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- <divnk rel = "stylesheet" href = > -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <!-- <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> --> 
+
+  <!-- <script src="https://ajax.googleapis.com/ajax/divbs/jquery/3.3.1/jquery.min.js"></script> -->
+  <script type = "text/javascript" charset="utf-8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+  <!-- <script type="text/javascript" src="js/mdb.min.js"></script>  -->
 </head>
-<body>
+
+<body class ="container m-t50 m-b-50">
+  <main>
   <app-root></app-root>
+  </main >
+  <script>
+    //     // SideNav Button Initiadivzation
+    // $(".button-collapse").sideNav();
+    // // SideNav Scrollbar Initiadivzation
+    // var sideNavScrollbar = document.querySelector('.custom-scrollbar');
+    // Ps.initiadivze(sideNavScrollbar);
+
+      $(document).ready(function () {
+      $('#dtBasicExample').DataTable();
+      $('.dataTables_length').addClass('bs-select');
+    });
+   </script>
 </body>
+
 </html>

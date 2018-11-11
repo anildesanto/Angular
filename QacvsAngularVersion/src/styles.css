@@ -1,2 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~bootstrap/dist/css/bootstrap.min.css';
+/* @import '~bootstrap/dist/css/bootstrap.min.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css';
+@import 'https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css';
+@import 'https://code.jquery.com/jquery-3.3.1.js';
+@import 'https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js';
+@import 'https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js'; */
+@import 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css';
+@import 'https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css';

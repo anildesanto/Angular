@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { CvsService } from './cvs.service';
+import { ICv } from './cv';
 import { catchError, tap, map } from 'rxjs/operators';``
 @Component({
   selector: 'app-cv-table',
@@ -7,16 +8,42 @@ import { catchError, tap, map } from 'rxjs/operators';``
   styleUrls: ['./cv-table.component.css']
 })
 export class CvTableComponent implements OnInit {
-  tableTitle : string = "Cvs Table"
+
   constructor(private cvsService : CvsService) { }
-  cvsList : any[];
-  filteredCvsList : any[];
+  cvsList : ICv[];
+  filteredCvsList : ICv[];
+  @Input() userId : number;
+  @Input() userName : string;
+  tableTitle : string;
+  ngOnChanges() : void
+  {
+    this.tableTitle = `${this.userName}'s Cvs Table`;
+    this.load();
+  }
   ngOnInit() 
   {
+    this.currentStatus = "All";
+    this.load();
+   
+  }
+  load()
+  {
     this.cvsService.getAllCvs().subscribe((list) => {
-      this.cvsList = list;
-      this.filteredCvsList = this.cvsList;
+      this.cvsList = list.filter(cv => 
+        cv.user.userId === this.userId
+        );//show particular user cv
+    this.filteredCvsList = this.cvsList;
     });
+  }
+  get userID() : number
+  {
+    return this.userId;
+  }
+  set userID (value : number)
+  {
+    
+    this.userId = value;
+    console.log("userId: "+this.userId);
   }
   currentStatus : string;
   get status () : string
@@ -28,7 +55,7 @@ export class CvTableComponent implements OnInit {
     this.currentStatus = value;
     this.filteredCvsList = this.filterByStatus(value);
   }
-  filterByStatus(status:string) : any[]
+  filterByStatus(status:string) : ICv[]
   {
     console.log(status);
     
