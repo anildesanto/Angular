@@ -7,6 +7,6 @@ import { UserService } from 'src/shared/user-table/users.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+  constructor(private userService : UserService){}
   title = 'Qacvs Angular Version';
 }

@@ -1,33 +1,36 @@
-<div class = "table-responsive" >
-  <h3>{{tableTitle}}</h3>
-  <!-- <input [(ngModel)] = "status" type = "search" /> -->
-  <select  [(ngModel)] = "status" class="form-control">
-      <option value = "" selected>All</option>
-      <option value = "Gray">Gray</option>
-      <option value = "Green">Green</option>
-      <option value = "Red">Red</option>
-  </select>
-  <p>Filtering by color: {{status}}</p>
-  <table class = "table table-hover table-bordered">
-    <thead>
-      <tr>
-        <th>Cv Name</th>
-        <th>Status</th>
-        <th>Creation Date</th>
-        <th>User Name</th>
-        <th>Download</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody *ngIf = "cvsList && cvsList.length">
-      <tr *ngFor = "let cv of filteredCvsList">
-        <td>{{cv.fileName}}</td>
-        <td>{{cv.status}}</td>
-        <td>{{cv.creationDate |date : "medium" }}</td>
-        <td>{{cv.user.firstName}} {{cv.user.lastName}}</td>
-        <td><a href = "{{cvsService.cvsUrl}}/{{cv.cvId}}/download" ><img src = "https://image.flaticon.com/icons/svg/138/138601.svg"  style = "width : 25px" /></a></td>
-        <td><a  (click) = "cvsService.deleteCv(cv.cvId)" ><img src = "https://image.flaticon.com/icons/png/128/138/138767.png"  style = "width : 25px" /></a></td>
-      </tr >
-    </tbody>
-  </table>
+
+  <div class="cards mx-auto mt-5">
+    <div class="card-header">{{tableTitle}}</div>
+    <div class="card-body">
+    <!-- <input [(ngModel)] = "status" type = "search" /> -->
+    <select  [(ngModel)] = "status" class="form-control">
+        <option value = "" selected>All</option>
+        <option value = "Gray">Gray</option>
+        <option value = "Green">Green</option>
+        <option value = "Red">Red</option>
+    </select>
+    <p>Filtering by color: {{status}}</p>
+    <table  class = "table table-hover table-bordered " cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Cv Name</th>
+          <th>Status</th>
+          <th>Creation Date</th>
+          <th>User Name</th>
+          <th>Download</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody *ngIf = "cvsList && cvsList.length">
+        <tr *ngFor = "let cv of filteredCvsList">
+          <td>{{cv.fileName}}</td>
+          <td>{{cv.status}}</td>
+          <td>{{cv.creationDate |date : "medium" }}</td>
+          <td>{{cv.user.firstName}} {{cv.user.lastName}}</td>
+          <td><a href = "{{cvsService.cvsUrl}}/{{cv.cvId}}/download" ><img src = "https://image.flaticon.com/icons/svg/138/138601.svg"  style = "width : 25px" /></a></td>
+          <td><a  (click) = "cvsService.deleteCv(cv.cvId)" ><img src = "https://image.flaticon.com/icons/png/128/138/138767.png"  style = "width : 25px" /></a></td>
+        </tr >
+      </tbody>
+    </table>
+  </div>
 </div>

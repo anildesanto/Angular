@@ -8,13 +8,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserTableComponent } from '../shared/user-table/user-table.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { LoginComponent } from './login/login.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 @NgModule({
   declarations: [
     AppComponent,
     CvTableComponent,
     UserTableComponent,
     DashboardComponent,
-    SideBarComponent
+    SideBarComponent,
+    LoginComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

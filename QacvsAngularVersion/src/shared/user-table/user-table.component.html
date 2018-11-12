@@ -1,32 +1,34 @@
-<div class = "table-responsive" *ngIf = "userList && filteredList.length">
-    <h3>{{tableTitle}}</h3>
+<!-- *ngIf = "userList && filteredList.length" -->
+    <div class="card mx-auto mt-5">
+      <div class="card-header">{{tableTitle}}</div>
+      <div class="card-body">
     <input [(ngModel)] = "filterString" type = "search" placeholder="Search by name, email or role" class="form-control"/>
     <p>Filtering by: {{filterString}}</p>
-    <table class = "table table-hover table-bordered" id="dtBasicExample" cellspacing="0" width="100%">
-      <thead>
-        <tr>
-          <th class="th-sm">Picture
-              <i class="fa fa-sort float-right" aria-hidden="true"></i>
-          </th>
-          <th class="th-sm">Name
-              <i class="fa fa-sort float-right" aria-hidden="true"></i>
-          </th>
-          <th class="th-sm">Email
-              <i class="fa fa-sort float-right" aria-hidden="true"></i>
-          </th>
-          <th class="th-sm">Role
-              <i class="fa fa-sort float-right" aria-hidden="true"></i>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor = "let user of filteredList" (click) = "loadCvs(user.userId, user.firstName)">
-          <td><img [id] = "user.userId" [src] = "userService.generateImgUrl(user.userId)" style = "width : 60px" (error) = userService.defaultImage(user.userId)/></td>
-          <td>{{user.firstName}} {{user.lastName}}</td>
-          <td>{{user.email}}</td>
-          <td>{{user.department.role}}</td>
-        </tr >
-      </tbody>
-    </table>
-  </div>
-  
+      <table  class = "table table-hover table-bordered "cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th class="th-sm">Picture
+                <i class="fa fa-sort float-right" ></i>
+            </th>
+            <th class="th-sm">Name
+                <i class="fa fa-sort float-right" ></i>
+            </th>
+            <th class="th-sm">Email
+                <i class="fa fa-sort float-right" ></i>
+            </th>
+            <th class="th-sm">Role
+                <i class="fa fa-sort float-right" ></i>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let user of filteredList" (click) = "loadCvs(user.userId, user.firstName)">
+            <td><img [id] = "user.userId" [src] = "userService.generateImgUrl(user.userId)" style = "width : 60px" (error) = userService.defaultImage(user.userId)/></td>
+            <td>{{user.firstName}} {{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.department.role}}</td>
+          </tr >
+        </tbody>
+      </table>
+      </div>
+    </div>

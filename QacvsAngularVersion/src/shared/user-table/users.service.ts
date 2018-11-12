@@ -10,6 +10,27 @@ import { Element } from "@angular/compiler/src/render3/r3_ast";
 )
 export class UserService
 {
+    loggedInUser : IUser = {
+        "userId": 3,
+        "firstName": "Dev",
+        "lastName": "Gonsai",
+        "email": "dev@qa.com",
+        "password": "affd13e23173798456665b373a595dfd",
+        "picture": {
+          "binaryStream": {}
+        },
+        "prefLocation": "",
+        "department": {
+          "departmentId": 3,
+          "role": "Trainee",
+          "handler": {},
+          "hibernateLazyInitializer": {}
+        }
+      }
+      getLoggedInUser() : IUser
+      {
+          return this.loggedInUser;
+      }
     returnedImg : Object;
     constructor(private userRequest : HttpClient)
     {}

@@ -12,25 +12,9 @@ export class DashboardComponent implements OnInit {
   userName : string;
   userToSearch : number;
   constructor(private userService : UserService){
-    console.log(this.loggedInUser);
+   
   }
-  loggedInUser : IUser = {
-    "userId": 3,
-    "firstName": "Dev",
-    "lastName": "Gonsai",
-    "email": "dev@qa.com",
-    "password": "affd13e23173798456665b373a595dfd",
-    "picture": {
-      "binaryStream": {}
-    },
-    "prefLocation": "",
-    "department": {
-      "departmentId": 3,
-      "role": "Trainee",
-      "handler": {},
-      "hibernateLazyInitializer": {}
-    }
-  }
+  loggedInUser : IUser;
 
   // get userToSearch() : number
   // {
@@ -42,6 +26,8 @@ export class DashboardComponent implements OnInit {
   // }
 
   ngOnInit() {
+    this.loggedInUser = this.userService.getLoggedInUser();
+    console.log("loggedin user:"+this.loggedInUser);
     if(this.loggedInUser.department.departmentId !== 1 && this.loggedInUser.department.departmentId !== 1)
     {
       this.userName = "User";
