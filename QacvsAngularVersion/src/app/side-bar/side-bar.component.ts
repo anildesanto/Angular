@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { UserService } from '../shared/user-table/users.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -7,7 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
  @Input() profilePicUrl : string ;
-  constructor() { }
+ constructor(private userService : UserService){
+   
+}
 
   ngOnInit() {
   }

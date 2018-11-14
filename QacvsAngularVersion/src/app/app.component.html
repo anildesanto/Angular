@@ -1,5 +1,6 @@
-<!--The content below is only a placeholder and can be replaced.-->
+
     <!-- <app-dashboard class = "container-fluid col"></app-dashboard> -->
+    <h1 style = "text-align: center">{{title}}</h1>
     <div class = "row"> 
       <app-side-bar *ngIf = "userService.loggedInUser" id="sdivde-out" class="side-nav fixed" [profilePicUrl] = "userService.generateImgUrl(userService.loggedInUser.userId)"></app-side-bar>
       <div class = "col">
