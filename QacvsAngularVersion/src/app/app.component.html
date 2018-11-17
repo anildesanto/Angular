@@ -1,8 +1,9 @@
 
     <!-- <app-dashboard class = "container-fluid col"></app-dashboard> -->
-    <h1 style = "text-align: center">{{title}}</h1>
+     <!-- The Modal -->
+    <div><h1 style = "text-align: center; background-color : #9fa0a1">{{title}}</h1></div>
     <div class = "row"> 
-      <app-side-bar *ngIf = "userService.loggedInUser" id="sdivde-out" class="side-nav fixed" [profilePicUrl] = "userService.generateImgUrl(userService.loggedInUser.userId)"></app-side-bar>
+      <app-side-bar  style = "background-color : #9fa0a1" *ngIf = "userService.loggedInUser" id="sdivde-out" class="sidebar fixed" [profilePicUrl] = "userService.generateImgUrl(userService.loggedInUser.userId)"></app-side-bar>
       <div class = "col">
         <router-outlet></router-outlet>
       </div>

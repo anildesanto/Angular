@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { LoginCheckGuard } from './login-check.guard';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
 
@@ -11,6 +12,10 @@ const routes: Routes = [
     {path : "login",
     component: LoginComponent,
     canActivate : [LoginCheckGuard]
+    },
+    {path : "reset",
+    component: ResetPasswordComponent,
+    //canActivate : [LoginCheckGuard]
     },
     
     {path : "dashboard", 

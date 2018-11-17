@@ -10,6 +10,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { LoginComponent } from './login/login.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { UploadComponent } from './shared/upload/upload.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,9 @@ import { CreateUserComponent } from './create-user/create-user.component';
     DashboardComponent,
     SideBarComponent,
     LoginComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    ResetPasswordComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,

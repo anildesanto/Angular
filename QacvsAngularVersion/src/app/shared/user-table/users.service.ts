@@ -2,15 +2,16 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { IUser } from "./user";
-import { tap } from "rxjs/operators";
-import { Element } from "@angular/compiler/src/render3/r3_ast";
 import { Router } from "@angular/router";
+import { GlobalVariables } from "src/app/global-variables.enum";
+import { Color } from "src/app/color.enum";
 @Injectable
 (
     {providedIn : "root"}
 )
 export class UserService
 {
+    checking : boolean;
     loggedInUser : IUser ;
       getLoggedInUser() : IUser
       {
@@ -19,22 +20,24 @@ export class UserService
     returnedImg : Object;
     constructor(private userRequest : HttpClient, private router: Router)
     {}
-    baseUrl : string = "https://qacvmanager.azurewebsites.net/api/";
+    baseUrl : string = GlobalVariables.Api;
     generateImgUrl(userId : string) : string
     {
-        return(`${this.baseUrl}user/${userId}/picture/download`);
+        return(`${this.baseUrl}/user/${userId}/picture/download`);
     }
     findUsers(value : string, lastName) : Observable <IUser[]>
     {
-        return this.userRequest.get<IUser[]>(`${this.baseUrl}findbyname/${value}&${lastName}`);
+        return this.userRequest.get<IUser[]>(`${this.baseUrl}/findbyname/${value}&${lastName}`);
     }
     defaultImage(imgId : string) : void
     {
         document.getElementById(imgId).setAttribute("src", "https://image.flaticon.com/icons/svg/149/149071.svg");
     }
-    tryLoggIn(email : string, password : string)
+    tryLoggIn(email : string, password : string) : void
     {
-        this.userRequest.get<IUser>(`${this.baseUrl}login/${email}&${password}`)
+        this.checking = true;
+        //this.updateElement(GlobalVariables.Confirm, Color.LimeGreen);
+        this.userRequest.get<IUser>(`${this.baseUrl}/login/${email}&${password}`)
         .subscribe((user) =>
         {
             if(user)
@@ -43,12 +46,21 @@ export class UserService
                 console.log("user loggedin: "+user[0].firstName);
                 console.log("try: "+this.loggedInUser.firstName);
                 this.router.navigate(["/dashboard"]);
-                return true;
+                //this.updateElement(GlobalVariables.Confirm, Color.LimeGreen);
+                this.checking = false;
             }
-            else
-            {
-                return false;
-            }
+        },
+        error => 
+        {
+            this.updateElement(GlobalVariables.Email, Color.LightPink);
+            this.checking = false;
+            document.getElementById('myModal').style.display = "block";
         });
+    }
+    updateElement(elementId : string, colour : string)
+    {
+      const element =  document.getElementById(elementId);
+      element.setAttribute("style", "background-color : "+colour);
+      element.focus();
     }
 }

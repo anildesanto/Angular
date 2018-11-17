@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.loggedInUser = this.userService.getLoggedInUser();
     console.log("loggedin user:"+this.loggedInUser);
-    if(this.loggedInUser.department.departmentId !== 1 && this.loggedInUser.department.departmentId !== 1)
+    if(this.loggedInUser.department.departmentId !== 1 && this.loggedInUser.department.departmentId !== 6)
     {
       this.userName = "User";
     }

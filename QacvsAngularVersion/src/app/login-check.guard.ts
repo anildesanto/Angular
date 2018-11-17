@@ -14,7 +14,7 @@ export class LoginCheckGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       
-      if(!this.userService.loggedInUser && state.url !== "/login")
+       if(!this.userService.loggedInUser && state.url !== "/login" && state.url !== "/reset")
       {
         this.router.navigate(["/login"]);
         return false;

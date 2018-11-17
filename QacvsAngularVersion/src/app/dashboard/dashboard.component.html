@@ -1,9 +1,15 @@
 <div>
   <div class="cards mx-auto mt-5">
-    <div class="card-header"> <h2>{{pageTitle}}</h2></div>
+    <div class="card-header"> <h2>{{pageTitle}}</h2>
+      <h5>Logged in as {{loggedInUser.department.role}} {{loggedInUser.firstName}}</h5>
+    </div>
     <div class="card-body">
-      <h5>Logged in as {{loggedInUser.firstName}}</h5>
-        <app-user-table *ngIf = "this.loggedInUser.department.departmentId !== 1 && this.loggedInUser.department.departmentId !== 1" (load) = "updateCvTable($event)" [loggedInUserDepartment] = "loggedInUser.department.departmentId"></app-user-table>
+      <div *ngIf = "this.loggedInUser.department.departmentId !== 1 && this.loggedInUser.department.departmentId !== 6" > 
+          <app-user-table (load) = "updateCvTable($event)" [loggedInUserDepartment] = "loggedInUser.department.departmentId"></app-user-table>
+      </div>
+      <div *ngIf = "this.loggedInUser.department.departmentId === 1 || this.loggedInUser.department.departmentId === 6">
+        <app-upload></app-upload>
+      </div>
         <app-cv-table [userId] = "userToSearch" [userName] = "userName"></app-cv-table>
     </div>
   </div>
